@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cao Sâm Ngọc Linh KBC — Chính Hãng ADN + QR</title>
+<style>
+:root {
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --dark: #0a0a0a;
+  --dark2: #111111;
+  --dark3: #1a1a1a;
+  --dark4: #222222;
+  --green: #2d5a27;
+  --green-light: #4a8f42;
+  --text: #e8e8e8;
+  --text-muted: #999;
+  --red: #c0392b;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--dark); color:var(--text); font-family:"Segoe UI",system-ui,sans-serif; line-height:1.6; }
+a { color:var(--gold); text-decoration:none; }
+
+/* NAV */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:1000;
+  background:rgba(10,10,10,0.95); backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(201,168,76,0.2);
+  padding:0 5%;
+  display:flex; align-items:center; justify-content:space-between; height:64px;
+}
+.nav-logo { font-size:1.2rem; font-weight:700; color:var(--gold); letter-spacing:2px; }
+.nav-links { display:flex; gap:2rem; }
+.nav-links a { color:var(--text-muted); font-size:.9rem; transition:.2s; }
+.nav-links a:hover { color:var(--gold); }
+.nav-cart {
+  background:var(--gold); color:var(--dark); border:none; cursor:pointer;
+  padding:.5rem 1.2rem; border-radius:6px; font-weight:700; font-size:.9rem;
+  display:flex; align-items:center; gap:.5rem;
+}
+.cart-count {
+  background:var(--red); color:#fff; border-radius:50%;
+  width:20px; height:20px; display:flex; align-items:center; justify-content:center;
+  font-size:.75rem; font-weight:700;
+}
+
+/* HERO */
+.hero {
+  min-height:100vh; padding:100px 5% 80px;
+  background: linear-gradient(135deg, #0a0a0a 0%, #0f1f0a 50%, #0a0a0a 100%);
+  display:flex; align-items:center; justify-content:center;
+  text-align:center; position:relative; overflow:hidden;
+}
+.hero::before {
+  content:""; position:absolute; inset:0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(201,168,76,0.08) 0%, transparent 70%);
+}
+.hero-badge {
+  display:inline-block; background:rgba(201,168,76,0.15); border:1px solid rgba(201,168,76,0.4);
+  color:var(--gold); padding:.4rem 1.2rem; border-radius:50px; font-size:.85rem;
+  letter-spacing:1px; margin-bottom:1.5rem;
+}
+.hero h1 {
+  font-size:clamp(2rem,5vw,3.8rem); font-weight:800; line-height:1.15;
+  margin-bottom:1.5rem;
+}
+.hero h1 span { color:var(--gold); }
+.hero-sub { font-size:1.15rem; color:var(--text-muted); max-width:600px; margin:0 auto 2.5rem; }
+.hero-stats {
+  display:flex; gap:2rem; justify-content:center; flex-wrap:wrap;
+  margin-bottom:3rem;
+}
+.hero-stat { text-align:center; }
+.hero-stat strong { display:block; font-size:1.8rem; color:var(--gold); font-weight:800; }
+.hero-stat span { font-size:.8rem; color:var(--text-muted); }
+.btn-primary {
+  display:inline-block; background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:var(--dark); padding:1rem 2.5rem; border-radius:8px;
+  font-weight:800; font-size:1.1rem; cursor:pointer; border:none;
+  transition:.3s; letter-spacing:.5px;
+}
+.btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(201,168,76,0.4); }
+.trust-row {
+  display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap;
+  margin-top:2rem; font-size:.85rem; color:var(--text-muted);
+}
+.trust-row span { display:flex; align-items:center; gap:.4rem; }
+
+/* SECTIONS */
+section { padding:80px 5%; }
+.section-label {
+  display:inline-block; color:var(--gold); font-size:.8rem; letter-spacing:3px;
+  text-transform:uppercase; margin-bottom:1rem; font-weight:600;
+}
+h2 { font-size:clamp(1.8rem,3.5vw,2.8rem); font-weight:800; line-height:1.2; margin-bottom:1rem; }
+h2 span { color:var(--gold); }
+.section-sub { color:var(--text-muted); font-size:1.05rem; max-width:600px; margin-bottom:3rem; }
+
+/* HIDDEN TRUTH */
+.hidden-truth { background:var(--dark2); }
+.truth-box {
+  background:linear-gradient(135deg,rgba(192,57,43,0.1),rgba(192,57,43,0.05));
+  border:1px solid rgba(192,57,43,0.3); border-radius:16px;
+  padding:2.5rem; margin-bottom:2rem;
+}
+.truth-box h3 { color:#e74c3c; font-size:1.3rem; margin-bottom:1rem; }
+.truth-list { list-style:none; }
+.truth-list li {
+  padding:.6rem 0; border-bottom:1px solid rgba(255,255,255,0.05);
+  display:flex; align-items:flex-start; gap:.8rem; color:var(--text-muted);
+}
+.truth-list li:last-child { border:none; }
+.truth-list li::before { content:"❌"; flex-shrink:0; }
+.truth-quote {
+  background:rgba(201,168,76,0.08); border-left:4px solid var(--gold);
+  padding:1.5rem 2rem; border-radius:0 12px 12px 0;
+  font-style:italic; font-size:1.1rem; color:var(--text); margin-top:2rem;
+}
+
+/* SCIENCE */
+.science { background:var(--dark3); }
+.science-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; }
+.science-card {
+  background:var(--dark4); border:1px solid rgba(201,168,76,0.15);
+  border-radius:16px; padding:2rem; transition:.3s;
+}
+.science-card:hover { border-color:var(--gold); transform:translateY(-4px); }
+.science-icon { font-size:2.5rem; margin-bottom:1rem; }
+.science-card h3 { color:var(--gold); font-size:1.1rem; margin-bottom:.8rem; }
+.science-card p { color:var(--text-muted); font-size:.95rem; }
+.science-stat {
+  font-size:2.5rem; font-weight:800; color:var(--gold); display:block; margin-bottom:.3rem;
+}
+.compare-table {
+  width:100%; border-collapse:collapse; margin-top:2rem;
+  background:var(--dark4); border-radius:12px; overflow:hidden;
+}
+.compare-table th {
+  background:rgba(201,168,76,0.15); color:var(--gold);
+  padding:1rem; text-align:center; font-size:.9rem;
+}
+.compare-table td {
+  padding:.9rem 1rem; text-align:center; border-bottom:1px solid rgba(255,255,255,0.05);
+  font-size:.95rem;
+}
+.compare-table tr:last-child td { border:none; }
+.compare-table .highlight { color:var(--gold); font-weight:700; }
+.compare-table .dim { color:var(--text-muted); }
+
+/* 3 PILLARS */
+.pillars { background:var(--dark2); }
+.pillars-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2rem; }
+.pillar-card {
+  background:linear-gradient(135deg,var(--dark3),var(--dark4));
+  border:1px solid rgba(201,168,76,0.2); border-radius:20px;
+  padding:2.5rem; position:relative; overflow:hidden;
+}
+.pillar-card::before {
+  content:""; position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg,var(--gold),var(--gold-light));
+}
+.pillar-num {
+  font-size:4rem; font-weight:900; color:rgba(201,168,76,0.15);
+  position:absolute; top:1rem; right:1.5rem; line-height:1;
+}
+.pillar-icon { font-size:2.5rem; margin-bottom:1rem; }
+.pillar-card h3 { color:var(--gold); font-size:1.3rem; margin-bottom:.5rem; }
+.pillar-card h4 { font-size:1rem; margin-bottom:1rem; }
+.pillar-card p { color:var(--text-muted); font-size:.95rem; margin-bottom:1rem; }
+.pillar-arrow {
+  color:var(--gold); font-size:.85rem; font-weight:600;
+  border-top:1px solid rgba(201,168,76,0.2); padding-top:1rem; margin-top:1rem;
+}
+
+/* PRODUCTS */
+.products { background:var(--dark); }
+.products-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.5rem; }
+.product-card {
+  background:var(--dark3); border:1px solid rgba(201,168,76,0.15);
+  border-radius:16px; overflow:hidden; transition:.3s; position:relative;
+}
+.product-card:hover { border-color:var(--gold); transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,0.4); }
+.product-badge {
+  position:absolute; top:1rem; right:1rem; z-index:2;
+  background:var(--gold); color:var(--dark); padding:.3rem .8rem;
+  border-radius:50px; font-size:.75rem; font-weight:700;
+}
+.product-badge.flagship { background:linear-gradient(135deg,#c9a84c,#e8c97a); }
+.product-img {
+  height:200px; background:linear-gradient(135deg,var(--dark4),var(--dark2));
+  display:flex; align-items:center; justify-content:center; font-size:4rem;
+}
+.product-body { padding:1.5rem; }
+.product-tag { color:var(--text-muted); font-size:.8rem; margin-bottom:.5rem; }
+.product-name { font-size:1.1rem; font-weight:700; margin-bottom:.3rem; }
+.product-desc { color:var(--text-muted); font-size:.85rem; margin-bottom:1rem; }
+.product-price { display:flex; align-items:center; gap:.8rem; margin-bottom:1rem; }
+.price-main { font-size:1.4rem; font-weight:800; color:var(--gold); }
+.price-old { font-size:.9rem; color:var(--text-muted); text-decoration:line-through; }
+.btn-add {
+  width:100%; background:transparent; border:1px solid var(--gold);
+  color:var(--gold); padding:.7rem; border-radius:8px;
+  font-weight:700; cursor:pointer; transition:.3s; font-size:.95rem;
+}
+.btn-add:hover { background:var(--gold); color:var(--dark); }
+
+/* TESTIMONIALS */
+.testimonials { background:var(--dark3); }
+.testi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem; }
+.testi-card {
+  background:var(--dark4); border:1px solid rgba(255,255,255,0.08);
+  border-radius:16px; padding:2rem;
+}
+.testi-stars { color:var(--gold); font-size:1.1rem; margin-bottom:1rem; }
+.testi-text { color:var(--text); font-style:italic; margin-bottom:1.5rem; line-height:1.7; }
+.testi-author { display:flex; align-items:center; gap:1rem; }
+.testi-avatar {
+  width:44px; height:44px; border-radius:50%;
+  background:linear-gradient(135deg,var(--green),var(--gold));
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700; font-size:1rem; color:#fff; flex-shrink:0;
+}
+.testi-name { font-weight:700; font-size:.95rem; }
+.testi-role { color:var(--text-muted); font-size:.8rem; }
+
+/* GUARANTEE */
+.guarantee { background:var(--dark2); text-align:center; }
+.guarantee-box {
+  max-width:700px; margin:0 auto;
+  background:linear-gradient(135deg,rgba(45,90,39,0.2),rgba(45,90,39,0.05));
+  border:1px solid rgba(74,143,66,0.3); border-radius:20px; padding:3rem;
+}
+.guarantee-icon { font-size:4rem; margin-bottom:1rem; }
+.guarantee-box h3 { font-size:1.8rem; color:var(--gold); margin-bottom:1rem; }
+.guarantee-box p { color:var(--text-muted); font-size:1.05rem; }
+
+/* CART SIDEBAR */
+.cart-overlay {
+  position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:2000;
+  opacity:0; pointer-events:none; transition:.3s;
+}
+.cart-overlay.open { opacity:1; pointer-events:all; }
+.cart-sidebar {
+  position:fixed; top:0; right:-420px; width:420px; max-width:100vw;
+  height:100vh; background:var(--dark2); z-index:2001;
+  transition:.35s cubic-bezier(.4,0,.2,1);
+  display:flex; flex-direction:column;
+  border-left:1px solid rgba(201,168,76,0.2);
+}
+.cart-sidebar.open { right:0; }
+.cart-header {
+  padding:1.5rem; border-bottom:1px solid rgba(255,255,255,0.08);
+  display:flex; align-items:center; justify-content:space-between;
+}
+.cart-header h3 { font-size:1.2rem; color:var(--gold); }
+.cart-close { background:none; border:none; color:var(--text-muted); font-size:1.5rem; cursor:pointer; }
+.cart-items { flex:1; overflow-y:auto; padding:1rem 1.5rem; }
+.cart-empty { text-align:center; color:var(--text-muted); padding:3rem 0; }
+.cart-item {
+  display:flex; gap:1rem; padding:1rem 0;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.cart-item-icon { font-size:2rem; flex-shrink:0; }
+.cart-item-info { flex:1; }
+.cart-item-name { font-weight:600; font-size:.95rem; margin-bottom:.3rem; }
+.cart-item-price { color:var(--gold); font-weight:700; }
+.cart-item-qty {
+  display:flex; align-items:center; gap:.5rem; margin-top:.5rem;
+}
+.qty-btn {
+  width:28px; height:28px; border-radius:50%; border:1px solid rgba(201,168,76,0.3);
+  background:none; color:var(--gold); cursor:pointer; font-size:1rem;
+  display:flex; align-items:center; justify-content:center;
+}
+.qty-btn:hover { background:var(--gold); color:var(--dark); }
+.qty-num { min-width:24px; text-align:center; font-weight:700; }
+.cart-remove { background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1.1rem; align-self:flex-start; }
+.cart-footer { padding:1.5rem; border-top:1px solid rgba(255,255,255,0.08); }
+.cart-total { display:flex; justify-content:space-between; margin-bottom:1.5rem; }
+.cart-total span:first-child { color:var(--text-muted); }
+.cart-total span:last-child { font-size:1.3rem; font-weight:800; color:var(--gold); }
+.btn-checkout {
+  width:100%; background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:var(--dark); border:none; padding:1rem; border-radius:10px;
+  font-weight:800; font-size:1.05rem; cursor:pointer; transition:.3s;
+}
+.btn-checkout:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(201,168,76,0.4); }
+
+/* CHECKOUT MODAL */
+.modal-overlay {
+  position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:3000;
+  display:none; align-items:center; justify-content:center; padding:1rem;
+}
+.modal-overlay.open { display:flex; }
+.modal {
+  background:var(--dark2); border:1px solid rgba(201,168,76,0.2);
+  border-radius:20px; width:100%; max-width:520px; max-height:90vh;
+  overflow-y:auto; padding:2.5rem;
+}
+.modal h3 { color:var(--gold); font-size:1.4rem; margin-bottom:1.5rem; }
+.form-group { margin-bottom:1.2rem; }
+.form-group label { display:block; color:var(--text-muted); font-size:.85rem; margin-bottom:.4rem; }
+.form-group input, .form-group select, .form-group textarea {
+  width:100%; background:var(--dark3); border:1px solid rgba(255,255,255,0.1);
+  color:var(--text); padding:.8rem 1rem; border-radius:8px; font-size:.95rem;
+  transition:.2s;
+}
+.form-group input:focus, .form-group select:focus {
+  outline:none; border-color:var(--gold);
+}
+.order-summary {
+  background:var(--dark3); border-radius:12px; padding:1.5rem; margin-bottom:1.5rem;
+}
+.order-summary h4 { color:var(--gold); margin-bottom:1rem; font-size:.95rem; }
+.order-line { display:flex; justify-content:space-between; padding:.4rem 0; font-size:.9rem; color:var(--text-muted); }
+.order-total { display:flex; justify-content:space-between; padding-top:.8rem; margin-top:.8rem; border-top:1px solid rgba(255,255,255,0.08); font-weight:700; color:var(--text); }
+.vietqr-box {
+  background:var(--dark3); border:1px solid rgba(201,168,76,0.2);
+  border-radius:12px; padding:1.5rem; text-align:center; margin-bottom:1.5rem;
+}
+.vietqr-box h4 { color:var(--gold); margin-bottom:1rem; }
+.qr-placeholder {
+  width:200px; height:200px; background:#fff; border-radius:12px;
+  margin:0 auto 1rem; display:flex; align-items:center; justify-content:center;
+  font-size:.8rem; color:#333; text-align:center; padding:1rem;
+}
+.bank-info { font-size:.85rem; color:var(--text-muted); line-height:1.8; }
+.bank-info strong { color:var(--text); }
+.modal-actions { display:flex; gap:1rem; }
+.btn-cancel { flex:1; background:none; border:1px solid rgba(255,255,255,0.15); color:var(--text-muted); padding:.9rem; border-radius:8px; cursor:pointer; font-size:.95rem; }
+.btn-confirm { flex:2; background:linear-gradient(135deg,var(--gold),var(--gold-light)); color:var(--dark); border:none; padding:.9rem; border-radius:8px; font-weight:800; cursor:pointer; font-size:.95rem; }
+
+/* SUCCESS */
+.success-modal { text-align:center; }
+.success-modal .check { font-size:4rem; margin-bottom:1rem; }
+.success-modal h3 { color:var(--green-light); font-size:1.5rem; margin-bottom:1rem; }
+.success-modal p { color:var(--text-muted); margin-bottom:.5rem; }
+
+/* FOOTER */
+footer {
+  background:var(--dark2); border-top:1px solid rgba(201,168,76,0.15);
+  padding:3rem 5%; text-align:center;
+}
+.footer-logo { font-size:1.5rem; font-weight:800; color:var(--gold); margin-bottom:1rem; }
+.footer-info { color:var(--text-muted); font-size:.85rem; line-height:2; }
+.footer-certs { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin:1.5rem 0; }
+.cert-badge {
+  background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.2);
+  color:var(--gold); padding:.4rem 1rem; border-radius:50px; font-size:.8rem;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px) {
+  .nav-links { display:none; }
+  .hero { padding:90px 5% 60px; }
+  .hero-stats { gap:1rem; }
+  .cart-sidebar { width:100vw; }
+  .modal { padding:1.5rem; }
+}
+
+/* STICKY CTA */
+.sticky-cta {
+  position:fixed; bottom:0; left:0; right:0; z-index:999;
+  background:rgba(10,10,10,0.97); border-top:1px solid rgba(201,168,76,0.2);
+  padding:.8rem 5%; display:flex; align-items:center; justify-content:space-between;
+  gap:1rem;
+}
+.sticky-cta p { font-size:.85rem; color:var(--text-muted); }
+.sticky-cta strong { color:var(--gold); }
+.sticky-cta .btn-primary { padding:.7rem 1.5rem; font-size:.9rem; white-space:nowrap; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">🌿 KBC GINSENG</div>
+  <div class="nav-links">
+    <a href="#san-pham">Sản Phẩm</a>
+    <a href="#khoa-hoc">Khoa Học</a>
+    <a href="#3-tru-cot">3 Trụ Cột</a>
+    <a href="#testimonials">Đánh Giá</a>
+  </div>
+  <button class="nav-cart" onclick="toggleCart()">
+    🛒 Giỏ Hàng <span class="cart-count" id="cartCount">0</span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div style="position:relative;z-index:1;max-width:800px;">
+    <div class="hero-badge">✦ CHỨNG NHẬN BỘ KH&CN 2017 · ADN PCR THUẦN CHỦNG ✦</div>
+    <h1>Cao Sâm Ngọc Linh KBC<br><span>Loại Sâm Quý Nhất Thế Giới</span><br>Nay Có Thể Kiểm Chứng</h1>
+    <p class="hero-sub">52 Saponin · Hàm lượng ~10% — gấp 2.5× sâm Hàn Quốc. Mỗi chai đều có mã QR truy xuất tận vườn và giấy giải mã ADN.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>52</strong><span>Saponin</span></div>
+      <div class="hero-stat"><strong>~10%</strong><span>Hàm lượng</span></div>
+      <div class="hero-stat"><strong>98.6%</strong><span>Chống oxy hoá</span></div>
+      <div class="hero-stat"><strong>1.250+</strong><span>Hộ Xê Đăng</span></div>
+      <div class="hero-stat"><strong>10+</strong><span>Năm R&D</span></div>
+    </div>
+    <button class="btn-primary" onclick="document.getElementById('san-pham').scrollIntoView({behavior:'smooth'})">
+      🌿 Xem 7 Sản Phẩm
+    </button>
+    <div class="trust-row">
+      <span>🔒 Thanh toán VietQR an toàn</span>
+      <span>✅ Hoàn tiền 30 ngày</span>
+      <span>🚚 Giao toàn quốc</span>
+      <span>🧬 Kèm giấy ADN</span>
+    </div>
+  </div>
+</section>
+
+<!-- SỰ THẬT BỊ CHE GIẤU -->
+<section class="hidden-truth">
+  <div class="section-label">⚠️ Sự thật bị che giấu</div>
+  <h2>Tại Sao 90% Sâm Ngọc Linh<br>Trên Thị Trường Là <span>Hàng Giả?</span></h2>
+  <p class="section-sub">Theo khảo sát thị trường 2025 — gần 90% sản phẩm gắn nhãn "Sâm Ngọc Linh" bán online là hàng giả hoặc pha trộn với sâm Trung Quốc, tam thất Vân Nam, hoặc củ ráy nhuộm màu.</p>
+  <div class="truth-box">
+    <h3>❗ Người mua trung thực đang mất:</h3>
+    <ul class="truth-list">
+      <li>5–10 triệu đồng mỗi năm đổ vào sản phẩm không có tác dụng thật</li>
+      <li>Cơ hội phục hồi sức khoẻ sau 40 tuổi: mệt mỏi mãn tính, mất ngủ, suy giảm trí nhớ</li>
+      <li>Niềm tin vào dược liệu quý của Việt Nam</li>
+      <li>Sự an tâm khi biếu tặng cha mẹ, đối tác thân thiết</li>
+    </ul>
+  </div>
+  <div class="truth-box" style="background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(201,168,76,0.03));border-color:rgba(201,168,76,0.25);">
+    <h3 style="color:var(--gold-light);">🔍 Vì sao khó phát hiện?</h3>
+    <ul class="truth-list">
+      <li>Hàng giả được bào chế tinh vi — màu sắc, mùi vị gần như giống thật</li>
+      <li>Không có cơ quan kiểm định độc lập tại điểm bán lẻ</li>
+      <li>Người mua không biết cách đọc kết quả kiểm nghiệm ADN</li>
+      <li>Hàm lượng Saponin không ghi trên nhãn (hoặc ghi mà không kiểm chứng được)</li>
+    </ul>
+  </div>
+  <div class="truth-quote">
+    "Nhiều khách hàng dùng sâm giả nhiều năm mà vẫn cứ tưởng <em>'mình không hợp với sâm'</em>. Sự thật: cơ thể họ chưa bao giờ được tiếp xúc với 52 Saponin thật của Sâm Ngọc Linh."
+    <br><br><strong style="color:var(--gold);font-style:normal;">— Đội R&D KBC Ginseng</strong>
+  </div>
+</section>
+
+<!-- BẰNG CHỨNG KHOA HỌC -->
+<section class="science" id="khoa-hoc">
+  <div class="section-label">🔬 Bằng chứng khoa học</div>
+  <h2>R&D Thực Thụ —<br><span>Không Phải Marketing</span></h2>
+  <p class="section-sub">3 phiếu kiểm nghiệm độc lập từ Bộ KH&CN · Giải mã ADN từng củ · Hơn 10.000 mẫu nhân giống thuần chủng</p>
+
+  <div class="science-grid" style="margin-bottom:3rem;">
+    <div class="science-card">
+      <div class="science-icon">🧬</div>
+      <span class="science-stat">52</span>
+      <h3>Saponin Hoạt Chất</h3>
+      <p>Nhiều nhất thế giới. Sâm Hàn Quốc ~28 loại, Sâm Mỹ ~14 loại. Trong đó 26 chất đặc hữu chỉ có ở Sâm Ngọc Linh.</p>
+    </div>
+    <div class="science-card">
+      <div class="science-icon">⚗️</div>
+      <span class="science-stat">~10%</span>
+      <h3>Tổng Saponin</h3>
+      <p>Sâm Hàn Quốc ~4%, Sâm Mỹ ~5%. KBC đạt ~10% — gấp 2.5 lần. Nhóm Ocotillol >50%: không có ở sâm Hàn Quốc.</p>
+    </div>
+    <div class="science-card">
+      <div class="science-icon">🛡️</div>
+      <span class="science-stat">98.6%</span>
+      <h3>Hoạt Tính Chống Oxy Hoá</h3>
+      <p>Ức chế α-glucosidase (đường huyết) 95%, α-amylase 93%. Mỗi liều 100–200mg — thị trường thường chỉ 2–20mg.</p>
+    </div>
+    <div class="science-card">
+      <div class="science-icon">🏛️</div>
+      <span class="science-stat">2017</span>
+      <h3>Chứng Nhận Bộ KH&CN</h3>
+      <p>Được công nhận bởi Bộ Khoa học & Công nghệ. Phiếu kiểm nghiệm phát hành bởi Trung tâm Tiêu chuẩn Đo lường CL1.</p>
+    </div>
+    <div class="science-card">
+      <div class="science-icon">🔬</div>
+      <span class="science-stat">PCR</span>
+      <h3>Giải Mã ADN Thuần Chủng</h3>
+      <p>Mỗi lô sản phẩm đều được lấy mẫu giải mã ADN đối chiếu với gen chuẩn Panax vietnamensis var. fuscidiscus.</p>
+    </div>
+    <div class="science-card">
+      <div class="science-icon">🌱</div>
+      <span class="science-stat">10+</span>
+      <h3>Năm Nuôi Cấy Mô</h3>
+      <p>Hệ thống nuôi cấy mô khép kín — nhân giống từ ADN gốc, kiểm soát 100% từ vườn đến thành phẩm. Hơn 10.000 mẫu.</p>
+    </div>
+  </div>
+
+  <h3 style="color:var(--gold);margin-bottom:1.5rem;">📊 So Sánh Hàm Lượng Saponin</h3>
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>Loại Sâm</th>
+        <th>Tổng Saponin</th>
+        <th>Số Loại Saponin</th>
+        <th>Ocotillol</th>
+        <th>Liều / lần</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="highlight">🌿 Sâm Ngọc Linh KBC</td>
+        <td class="highlight">~10%</td>
+        <td class="highlight">52 loại</td>
+        <td class="highlight">>50%</td>
+        <td class="highlight">100–200mg</td>
+      </tr>
+      <tr>
+        <td class="dim">Sâm Hàn Quốc</td>
+        <td class="dim">~4%</td>
+        <td class="dim">~28 loại</td>
+        <td class="dim" style="color:#e74c3c;">Không có</td>
+        <td class="dim">2–20mg</td>
+      </tr>
+      <tr>
+        <td class="dim">Sâm Mỹ</td>
+        <td class="dim">~5%</td>
+        <td class="dim">~14 loại</td>
+        <td class="dim">Ít</td>
+        <td class="dim">2–20mg</td>
+      </tr>
+      <tr>
+        <td class="dim">Sâm Trung Quốc</td>
+        <td class="dim">~2%</td>
+        <td class="dim">~12 loại</td>
+        <td class="dim" style="color:#e74c3c;">Không có</td>
+        <td class="dim">2–5mg</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- PHƯƠNG PHÁP 3 TRỤ CỘT -->
+<section class="pillars" id="3-tru-cot">
+  <div class="section-label">🏛️ Phương pháp độc quyền</div>
+  <h2>Hệ Thống <span>"DNA – QR – 52"</span><br>3 Trụ Cột Kiểm Chứng</h2>
+  <p class="section-sub">Suốt 10+ năm, đội R&D KBC hợp tác với Bộ KH&CN, Viện Dược Liệu và 1.250+ hộ Xê Đăng xây dựng quy trình kiểm chứng 3 lớp — duy nhất tại Việt Nam.</p>
+
+  <div class="pillars-grid">
+    <div class="pillar-card">
+      <div class="pillar-num">01</div>
+      <div class="pillar-icon">🧬</div>
+      <h3>DNA — Giải Mã Gen Thuần Chủng</h3>
+      <h4>Xác thực từ cấp độ phân tử</h4>
+      <p>Mỗi củ sâm KBC được lấy mẫu và giải mã ADN tại phòng thí nghiệm đối tác Bộ KH&CN — đối chiếu với gen chuẩn Panax vietnamensis. Giấy ADN đi kèm từng hộp sản phẩm.</p>
+      <div class="pillar-arrow">→ Cách đọc kết quả ADN như chuyên gia trong 5 phút</div>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-num">02</div>
+      <div class="pillar-icon">🔍</div>
+      <h3>QR — Truy Xuất Tận Vườn</h3>
+      <h4>Minh bạch từ hạt giống đến tay bạn</h4>
+      <p>Mỗi chai Cao Sâm KBC có mã QR riêng. Quét mã = xem video 90 giây quay tận vườn — ai trồng, ngày thu hoạch, quy trình chế biến. Không thể làm giả.</p>
+      <div class="pillar-arrow">→ Quét QR ngay trên điện thoại để kiểm tra</div>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-num">03</div>
+      <div class="pillar-icon">💧</div>
+      <h3>52 Saponin — Tinh Chất Vàng</h3>
+      <h4>Hàm lượng cao nhất thế giới</h4>
+      <p>Quy trình chiết suất ở nhiệt độ thấp bảo toàn đủ 52 hoạt chất Saponin. Nhóm Ocotillol >50% — hoàn toàn không có ở sâm Hàn Quốc. Mỗi liều 100–200mg thực sự.</p>
+      <div class="pillar-arrow">→ Lịch dùng 30 ngày tối ưu hấp thụ</div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 SẢN PHẨM -->
+<section class="products" id="san-pham">
+  <div class="section-label">🌿 Cửa hàng chính hãng</div>
+  <h2>7 Dòng Sản Phẩm <span>Cao Sâm KBC</span></h2>
+  <p class="section-sub">Tất cả đều có ADN + QR truy xuất nguồn gốc. Chọn sản phẩm phù hợp với nhu cầu của anh/chị.</p>
+
+  <div class="products-grid">
+
+    <div class="product-card">
+      <div class="product-badge">Thử nghiệm</div>
+      <div class="product-img">🌿</div>
+      <div class="product-body">
+        <div class="product-tag">Cao Sâm KBC Active</div>
+        <div class="product-name">Hộp Đơn 15ml</div>
+        <div class="product-desc">🎯 Người dùng thử lần đầu · Du lịch, công tác · Trải nghiệm 15 ngày</div>
+        <div class="product-price">
+          <span class="price-main">3.000.000đ</span>
+        </div>
+        <button class="btn-add" onclick="addToCart('active-15', 'Cao Sâm Active 15ml', 3000000)">+ Thêm vào giỏ</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-badge">Tiết kiệm</div>
+      <div class="product-img">🌿🌿</div>
+      <div class="product-body">
+        <div class="product-tag">Cao Sâm KBC Active</div>
+        <div class="product-name">Hộp Đôi 2×15ml</div>
+        <div class="product-desc">🎯 Cặp vợ chồng · Quà tặng nhỏ · Tiết kiệm 500.000đ so với mua lẻ</div>
+        <div class="product-price">
+          <span class="price-main">5.500.000đ</span>
+          <span class="price-old">6.000.000đ</span>
+        </div>
+        <button class="btn-add" onclick="addToCart('active-15x2', 'Cao Sâm Active 2×15ml', 5500000)">+ Thêm vào giỏ</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-badge">Phổ biến</div>
+      <div class="product-img">🍃</div>
+      <div class="product-body">
+        <div class="product-tag">Cao Sâm KBC Active</div>
+        <div class="product-name">Hộp Đơn 30ml</div>
+        <div class="product-desc">🎯 Dùng đủ 30 ngày trọn vẹn · Người 35–50 tuổi · Cảm nhận rõ sau 2 tuần</div>
+        <div class="product-price">
+          <span class="price-main">5.500.000đ</span>
+        </div>
+        <button class="btn-add" onclick="addToCart('active-30', 'Cao Sâm Active 30ml', 5500000)">+ Thêm vào giỏ</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-badge">Tiết kiệm</div>
+      <div class="product-img">🍃🍃</div>
+      <div class="product-body">
+        <div class="product-tag">Cao Sâm KBC Active</div>
+        <div class="product-name">Hộp Đôi 2×30ml</div>
+        <div class="product-desc">🎯 Quà tặng cha mẹ · Sếp · Đối tác · Tiết kiệm 500.000đ</div>
+        <div class="product-price">
+          <span class="price-main">10.500.000đ</span>
+          <span class="price-old">11.000.000đ</span>
+        </div>
+        <button class="btn-add" onclick="addToCart('active-30x2', 'Cao Sâm Active 2×30ml', 10500000)">+ Thêm vào giỏ</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-badge flagship">⭐ Premium</div>
+      <div class="product-img">✨</div>
+      <div class="product-body">
+        <div class="product-tag">Cao Sâm KBC Elite</div>
+        <div class="product-name">Hộp Gỗ 45ml</div>
+        <div class="product-desc">🎯 Người 50+ phục hồi sâu · Quà tặng cao cấp Tết · Hộp gỗ sang trọng</div>
+        <div class="product-price">
+          <span class="price-main">10.000.000đ</span>
+        </div>
+        <button class="btn-add" onclick="addToCart('elite-45', 'Cao Sâm Elite 45ml', 10000000)">+ Thêm vào giỏ</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-badge flagship">👑 Ultimate</div>
+      <div class="product-img">👑</div>
+      <div class="product-body">
+        <div class="product-tag">Cao Sâm KBC Elite</div>
+        <div class="product-name">Hộp Gỗ Đôi 2×45ml</div>
+        <div class="product-desc">🎯 Quà tặng đối tác VIP · Doanh nhân tặng nhau · Tết biếu cha mẹ + sếp</div>
+        <div class="product-price">
+          <span class="price-main">19.000.000đ</span>
+          <span class="price-old">20.000.000đ</span>
+        </div>
+        <button class="btn-add" onclick="addToCart('elite-45x2', 'Cao Sâm Elite 2×45ml', 19000000)">+ Thêm vào giỏ</button>
+      </div>
+    </div>
+
+    <div class="product-card" style="border-color:rgba(201,168,76,0.4);">
+      <div class="product-badge flagship" style="background:linear-gradient(135deg,#8B0000,#c0392b);">🏆 Flagship</div>
+      <div class="product-img" style="background:linear-gradient(135deg,#1a0a00,#2d1500);">💎</div>
+      <div class="product-body">
+        <div class="product-tag">Cao Sâm KBC Premium</div>
+        <div class="product-name">Hộp Gỗ Cao Cấp 50ml</div>
+        <div class="product-desc">🎯 Sản phẩm đỉnh cao · Quà VIP · Hàm lượng Saponin cao nhất · Hộp gỗ khắc tên theo yêu cầu</div>
+        <div class="product-price">
+          <span class="price-main" style="font-size:1.6rem;">20.000.000đ</span>
+        </div>
+        <button class="btn-add" style="border-color:var(--gold-light);color:var(--gold-light);" onclick="addToCart('premium-50', 'Cao Sâm Premium 50ml ★', 20000000)">+ Thêm vào giỏ</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-label">⭐ Khách hàng nói gì</div>
+  <h2>4.832+ Người Việt<br><span>Đã Tin Tưởng KBC</span></h2>
+  <p class="section-sub">92% phân biệt được sâm thật-giả sau lần đầu · 87% quay lại mua trong 60 ngày</p>
+
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Trước đây tôi đã mua phải 2 chai Sâm Ngọc Linh giả tổng cộng 9 triệu. Sau khi dùng KBC Elite 45ml — giấc ngủ sâu hơn rõ rệt sau 3 tuần. Quan trọng nhất là có giấy ADN trong hộp, tôi hoàn toàn yên tâm."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">TH</div>
+        <div>
+          <div class="testi-name">Anh Trần Minh H., 52 tuổi</div>
+          <div class="testi-role">Giám đốc · Q.7 TP.HCM ✅ Đã xác minh</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Ban đầu tôi nghĩ đây chỉ là chiêu bán hàng. Nhưng khi quét QR thấy video vườn sâm thật, đọc giấy ADN — tôi mới hiểu vì sao KBC tự tin đến vậy. Chất lượng có thể kiểm chứng được, không phải lời hứa suông."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">LD</div>
+        <div>
+          <div class="testi-name">Chị Lê Thuỳ D., 38 tuổi</div>
+          <div class="testi-role">Marketing Director · Cầu Giấy, HN ✅</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Tôi mua Cao Sâm Elite 45ml biếu bố Tết. Bố tôi 76 tuổi, đang điều trị ung thư đại tràng giai đoạn ổn định — dùng 3 tháng, bác sĩ nói chỉ số men gan cải thiện rõ. Tôi yên tâm vì có giấy ADN trong hộp."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">NA</div>
+        <div>
+          <div class="testi-name">Chị Nguyễn Hồng A., 41 tuổi</div>
+          <div class="testi-role">Việt kiều Mỹ ✅ Đã xác minh</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:3rem;">
+    <div class="cert-badge">🏛️ Bộ KH&CN VN (2017)</div>
+    <div class="cert-badge">🧬 Viện Dược Liệu TW</div>
+    <div class="cert-badge">📜 ISO 22000:2018</div>
+    <div class="cert-badge">🏔️ UBND Quảng Ngãi</div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="guarantee">
+  <div class="guarantee-box">
+    <div class="guarantee-icon">🛡️</div>
+    <h3>Cam Kết Hoàn Tiền 100%</h3>
+    <p style="font-size:1.15rem;margin-bottom:1rem;">Dùng đúng liều trong <strong style="color:var(--gold);">30 ngày</strong> — nếu không cảm nhận sự khác biệt, KBC hoàn tiền 100% không hỏi lý do.</p>
+    <p>Chúng tôi tự tin vì sản phẩm có thể kiểm chứng bằng ADN và QR. Anh/chị không mất gì nếu không hiệu quả.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">🌿 KBC GINSENG</div>
+  <div class="footer-certs">
+    <span class="cert-badge">🏛️ Bộ KH&CN 2017</span>
+    <span class="cert-badge">🧬 ADN PCR</span>
+    <span class="cert-badge">🔍 QR Truy Xuất</span>
+    <span class="cert-badge">🌿 1.250+ Hộ Xê Đăng</span>
+  </div>
+  <div class="footer-info">
+    <strong>Cổ phần Đầu tư và Phát triển Sâm KBC</strong><br>
+    MST: 6101298538 · 222 Bà Triệu, P.Kon Tum, Quảng Ngãi<br>
+    ĐT: 0387728034 · Email: Congtykbckt@gmail.com<br>
+    STK: <strong>1064356992</strong> (Ngân hàng — thanh toán đơn hàng)<br><br>
+    <span style="font-size:.8rem;color:#666;">© 2026 KBC Ginseng. Tất cả quyền được bảo lưu.</span>
+  </div>
+</footer>
+
+<!-- STICKY CTA -->
+<div class="sticky-cta">
+  <p>🌿 <strong>Cao Sâm Ngọc Linh KBC</strong> — ADN + QR chính hãng</p>
+  <button class="btn-primary" onclick="document.getElementById('san-pham').scrollIntoView({behavior:'smooth'})">Mua Ngay</button>
+</div>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3>🛒 Giỏ Hàng</h3>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">Giỏ hàng trống<br><small>Thêm sản phẩm để bắt đầu</small></div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Tổng cộng:</span>
+      <span id="cartTotal">0đ</span>
+    </div>
+    <button class="btn-checkout" onclick="openCheckout()">Thanh Toán →</button>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal">
+    <h3>📋 Thông Tin Đặt Hàng</h3>
+
+    <div class="order-summary" id="orderSummary"></div>
+
+    <div class="form-group">
+      <label>Họ và tên *</label>
+      <input type="text" id="cusName" placeholder="Nguyễn Văn A">
+    </div>
+    <div class="form-group">
+      <label>Số điện thoại *</label>
+      <input type="tel" id="cusPhone" placeholder="0987 654 321">
+    </div>
+    <div class="form-group">
+      <label>Địa chỉ giao hàng *</label>
+      <input type="text" id="cusAddress" placeholder="Số nhà, đường, phường/xã, tỉnh/thành">
+    </div>
+    <div class="form-group">
+      <label>Ghi chú (tuỳ chọn)</label>
+      <input type="text" id="cusNote" placeholder="Giao giờ hành chính, gọi trước khi giao...">
+    </div>
+
+    <div class="vietqr-box">
+      <h4>💳 Thanh Toán Chuyển Khoản VietQR</h4>
+      <div class="qr-placeholder" id="qrCode">
+        <div>
+          <strong>VietQR</strong><br>
+          STK: 1064356992<br>
+          <small>Nội dung: [Tên] + [SĐT]</small>
+        </div>
+      </div>
+      <div class="bank-info">
+        <strong>Ngân hàng:</strong> (Ngân hàng KBC)<br>
+        <strong>Số tài khoản:</strong> 1064356992<br>
+        <strong>Chủ tài khoản:</strong> Cổ phần Đầu tư và Phát triển Sâm KBC<br>
+        <strong>Nội dung CK:</strong> <span id="transferContent" style="color:var(--gold);">[Tên] + [SĐT]</span>
+      </div>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeCheckout()">Huỷ</button>
+      <button class="btn-confirm" onclick="confirmOrder()">✅ Xác Nhận Đặt Hàng</button>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div class="modal-overlay" id="successModal">
+  <div class="modal success-modal">
+    <div class="check">✅</div>
+    <h3>Đặt Hàng Thành Công!</h3>
+    <p>Cảm ơn anh/chị đã tin tưởng KBC Ginseng.</p>
+    <p>Đội ngũ sẽ liên hệ xác nhận trong <strong style="color:var(--gold);">30 phút</strong>.</p>
+    <p style="margin-top:1rem;font-size:.85rem;color:#666;">Sau khi chuyển khoản, vui lòng chụp màn hình gửi về: <strong>0387728034</strong></p>
+    <button class="btn-confirm" style="margin-top:2rem;width:100%;" onclick="document.getElementById('successModal').classList.remove('open')">Đóng</button>
+  </div>
+</div>
+
+<script>
+// ===== CART STATE =====
+let cart = {};
+
+const products = {
+  'active-15':   { name: 'Cao Sâm Active 15ml',    price: 3000000 },
+  'active-15x2': { name: 'Cao Sâm Active 2×15ml',  price: 5500000 },
+  'active-30':   { name: 'Cao Sâm Active 30ml',    price: 5500000 },
+  'active-30x2': { name: 'Cao Sâm Active 2×30ml',  price: 10500000 },
+  'elite-45':    { name: 'Cao Sâm Elite 45ml',     price: 10000000 },
+  'elite-45x2':  { name: 'Cao Sâm Elite 2×45ml',   price: 19000000 },
+  'premium-50':  { name: 'Cao Sâm Premium 50ml ★', price: 20000000 },
+};
+
+function fmt(n) {
+  return n.toLocaleString('vi-VN') + 'đ';
+}
+
+function addToCart(id, name, price) {
+  if (cart[id]) {
+    cart[id].qty++;
+  } else {
+    cart[id] = { name, price, qty: 1 };
+  }
+  renderCart();
+  openCart();
+}
+
+function removeFromCart(id) {
+  delete cart[id];
+  renderCart();
+}
+
+function changeQty(id, delta) {
+  if (!cart[id]) return;
+  cart[id].qty += delta;
+  if (cart[id].qty <= 0) delete cart[id];
+  renderCart();
+}
+
+function getTotal() {
+  return Object.values(cart).reduce((s, i) => s + i.price * i.qty, 0);
+}
+
+function getCount() {
+  return Object.values(cart).reduce((s, i) => s + i.qty, 0);
+}
+
+function renderCart() {
+  const count = getCount();
+  document.getElementById('cartCount').textContent = count;
+  document.getElementById('cartTotal').textContent = fmt(getTotal());
+
+  const el = document.getElementById('cartItems');
+  if (count === 0) {
+    el.innerHTML = '<div class="cart-empty">Giỏ hàng trống<br><small>Thêm sản phẩm để bắt đầu</small></div>';
+    return;
+  }
+
+  el.innerHTML = Object.entries(cart).map(([id, item]) => `
+    <div class="cart-item">
+      <div class="cart-item-icon">🌿</div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-price">${fmt(item.price)}</div>
+        <div class="cart-item-qty">
+          <button class="qty-btn" onclick="changeQty('${id}',-1)">−</button>
+          <span class="qty-num">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty('${id}',1)">+</button>
+        </div>
+      </div>
+      <button class="cart-remove" onclick="removeFromCart('${id}')">🗑</button>
+    </div>
+  `).join('');
+}
+
+function openCart() {
+  document.getElementById('cartSidebar').classList.add('open');
+  document.getElementById('cartOverlay').classList.add('open');
+}
+
+function toggleCart() {
+  document.getElementById('cartSidebar').classList.toggle('open');
+  document.getElementById('cartOverlay').classList.toggle('open');
+}
+
+function openCheckout() {
+  if (getCount() === 0) return;
+  // Build order summary
+  const lines = Object.values(cart).map(i =>
+    `<div class="order-line"><span>${i.name} ×${i.qty}</span><span>${fmt(i.price * i.qty)}</span></div>`
+  ).join('');
+  document.getElementById('orderSummary').innerHTML = `
+    <h4>📦 Đơn hàng của bạn</h4>
+    ${lines}
+    <div class="order-total"><span>Tổng cộng</span><span>${fmt(getTotal())}</span></div>
+  `;
+  document.getElementById('checkoutModal').classList.add('open');
+  document.getElementById('cartSidebar').classList.remove('open');
+  document.getElementById('cartOverlay').classList.remove('open');
+}
+
+function closeCheckout() {
+  document.getElementById('checkoutModal').classList.remove('open');
+}
+
+function confirmOrder() {
+  const name = document.getElementById('cusName').value.trim();
+  const phone = document.getElementById('cusPhone').value.trim();
+  const address = document.getElementById('cusAddress').value.trim();
+
+  if (!name || !phone || !address) {
+    alert('Vui lòng điền đầy đủ họ tên, số điện thoại và địa chỉ.');
+    return;
+  }
+
+  // Update transfer content
+  document.getElementById('transferContent').textContent = name + ' ' + phone;
+
+  closeCheckout();
+  document.getElementById('successModal').classList.add('open');
+
+  // Clear cart
+  cart = {};
+  renderCart();
+}
+
+// Init
+renderCart();
+</script>
+</body>
+</html>
