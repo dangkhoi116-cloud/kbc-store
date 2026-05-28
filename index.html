@@ -969,5 +969,22 @@ function confirmOrder() {
 // Init
 renderCart();
 </script>
+
+<!-- Flowise KBC AI Chatbot -->
+<script type=module>
+  import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+  Chatbot.init({
+    chatflowid: "bfa4087e-c5be-44ac-a1c4-6a2b4a0fa461",
+    apiHost: "https://rrp-exclude-oem-drum.trycloudflare.com",
+    theme: {
+      button: { backgroundColor: "#16a34a", bottom: 20, right: 20 },
+      chatWindow: {
+        welcomeMessage: "Xin chào! Em là trợ lý AI của KBC Ginseng 🌿 Anh cần tư vấn sản phẩm gì ạ?",
+        height: 600,
+        width: 380
+      }
+    }
+  })
+</script>
 </body>
 </html>
